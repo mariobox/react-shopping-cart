@@ -13,7 +13,6 @@ class App extends Component {
     }
     this.increaseQuantity = this.increaseQuantity.bind(this);
     this.decreaseQuantity = this.decreaseQuantity.bind(this);
-    this.toggleShoppingCart = this.toggleShoppingCart.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.onRemove = this.onRemove.bind(this);
   }
@@ -49,35 +48,27 @@ class App extends Component {
       });
   }
 
-  toggleShoppingCart() {
-    let sc = document.getElementById("shoppingCart");
-    if (sc.style.display === "block") {
-      sc.style.display = "none"
-    }
-    else {
-      sc.style.display = "block";
-    }
-  }
+  
 
   addToCart(selectedTeam) {
     let cartItems = this.state.cart;
-		let productID = selectedTeam.id;
-		let productQty = selectedTeam.quantity;
-    if(this.checkProduct(productID)){
-			console.log('hi');
-			let index = cartItems.findIndex((x => x.id == productID));
-			cartItems[index].quantity = Number(cartItems[index].quantity) + Number(productQty);
-			this.setState({
-				cart: cartItems
-			})
-		} else {
-			cartItems.push(selectedTeam);
+    let productID = selectedTeam.id;
+    let productQty = selectedTeam.quantity;
+    if (this.checkProduct(productID)) {
+      console.log('hi');
+      let index = cartItems.findIndex((x => x.id === productID));
+      cartItems[index].quantity = Number(cartItems[index].quantity) + Number(productQty);
       this.setState({
         cart: cartItems
       })
-		}
+    } else {
+      cartItems.push(selectedTeam);
+      this.setState({
+        cart: cartItems
+      })
+    }
 
-    
+
   }
 
   onRemove(index) {
@@ -105,18 +96,34 @@ class App extends Component {
               </a>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader"
                 aria-expanded="false" aria-label="Toggle navigation">
-                <span className="glyphicon glyphicon-shopping-cart" onClick={this.toggleShoppingCart}><i className="fas fa-shopping-cart"></i></span>
+                <span className="glyphicon glyphicon-shopping-cart" data-toggle="modal" data-target="#exampleModal"><i className="fas fa-shopping-cart"></i></span>
               </button>
             </div>
           </div>
         </header>
         <br />
-        <div id="shoppingCart">
-          <ShoppingCart
-            cart={this.state.cart}
-            onRemove={(index) => this.onRemove(index)}
-            />
+        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">Shopping Cart</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <div id="shoppingCart">
+                  <ShoppingCart
+                    cart={this.state.cart}
+                    onRemove={(index) => this.onRemove(index)}
+                    />
+                </div>
+              </div>
+              
+            </div>
+          </div>
         </div>
+
         <div className="container">
           <div className="row">
             {

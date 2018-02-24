@@ -81,6 +81,41 @@ const teamList = [
         price: 69,
         image: "img/senegal.jpg",
         quantity: 0
+    },
+    {
+        id: 13,
+        team: "BELGIUM",
+        price: 79,
+        image: "img/belgium.png",
+        quantity: 0
+    },
+    {
+        id: 14,
+        team: "SWEDEN",
+        price: 69,
+        image: "img/sweden.jpg",
+        quantity: 0
+    },
+    {
+        id: 15,
+        team: "ICELAND",
+        price: 79,
+        image: "img/iceland.jpg",
+        quantity: 0
+    },
+    {
+        id: 16,
+        team: "COSTA RICA",
+        price: 69,
+        image: "img/costarica.jpg",
+        quantity: 0
+    },
+    {
+        id: 17,
+        team: "EGYPT",
+        price: 69,
+        image: "img/egypt.jpg",
+        quantity: 0
     }
 ]
 

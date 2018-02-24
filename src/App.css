@@ -30,8 +30,10 @@
     text-align: center;
 }
 
-#shoppingCart {
-    display: none;
+
+
+.shirtCart {
+    width: 25px;
 }
 
 .add {
@@ -41,16 +43,25 @@
     color: white;
 }
 
+.checkout {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: bold;
+}
 
 .add:hover {
     background-color: deepskyblue;
     border-color: deepskyblue;
 }
 
-
 tr {
     text-align: center;
 }
+
+.modal-header {
+    border-bottom: 0px;
+}
+
 
 .increment,
 .decrement{

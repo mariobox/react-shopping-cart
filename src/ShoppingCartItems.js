@@ -5,7 +5,8 @@ class ShoppingCartItems extends Component {
         return (
             <tr>
                 <th scope="row">{this.props.item_num}</th>
-                <td>{this.props.team}</td>
+                <td>{this.props.item}</td>
+                <td>{this.props.team}</td>                
                 <td>{this.props.quantity}</td>
                 <td>${this.props.price}</td>
                 <td>${this.props.quantity * this.props.price}</td>

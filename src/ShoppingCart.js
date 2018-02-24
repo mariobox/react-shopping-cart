@@ -11,6 +11,7 @@ class ShoppingCart extends Component {
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
+                                    <th scope="col">Item</th>
                                     <th scope="col">Country</th>
                                     <th scope="col">Quantity</th>
                                     <th scope="col">Unit Price</th>
@@ -25,6 +26,7 @@ class ShoppingCart extends Component {
                                         return <ShoppingCartItems
                                         key={index}
                                         item_num={index + 1}
+                                        item={<img className="shirtCart" src={item.image} alt="" />}
                                         team={item.team}
                                         quantity={item.quantity}
                                         price={item.price}    
@@ -37,8 +39,8 @@ class ShoppingCart extends Component {
                             }
                             </tbody>
                             <tfoot>{this.props.cart.length === 0 ? <tr>
-                            <td colSpan="5">Your cart is empty</td>
-                            </tr> : null
+                            <td colSpan="7">Your cart is empty</td>
+                            </tr> : <tr><td colSpan="7"><button type="button" className="btn btn-warning checkout">Proceed To Checkout</button></td></tr>
                             }
                             
                             </tfoot>
