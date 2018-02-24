@@ -71,7 +71,9 @@ class App extends Component {
 
   }
 
-  onRemove(index) {
+  onRemove(indexToRemove) {
+    let cart = this.state.cart;
+		let index = cart.findIndex((x => x.id == indexToRemove));
     this.state.cart.splice(index, 1);
     this.setState({
       cart: this.state.cart
@@ -115,7 +117,7 @@ class App extends Component {
                 <div id="shoppingCart">
                   <ShoppingCart
                     cart={this.state.cart}
-                    onRemove={(index) => this.onRemove(index)}
+                    onRemove={this.onRemove}
                     />
                 </div>
               </div>

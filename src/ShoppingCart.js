@@ -30,7 +30,7 @@ class ShoppingCart extends Component {
                                         team={item.team}
                                         quantity={item.quantity}
                                         price={item.price}    
-                                        onRemove={index => this.props.onRemove(index)}                                    
+                                        onRemove={this.props.onRemove.bind(this, item.id)}                                    
                                         />
                                     }
                                     else {return null}
