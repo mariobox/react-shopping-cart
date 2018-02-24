@@ -3,6 +3,8 @@ import './App.css';
 import { teamList } from './shirts';
 import Product from './Product';
 import ShoppingCart from './ShoppingCart';
+import Header from './Header';
+import ModalCart from './ModalCart';
 
 class App extends Component {
   constructor() {
@@ -15,6 +17,7 @@ class App extends Component {
     this.decreaseQuantity = this.decreaseQuantity.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.onRemove = this.onRemove.bind(this);
+    this.checkOut = this.checkOut.bind(this);
   }
 
   increaseQuantity(quantity, indexToChange) {
@@ -48,8 +51,6 @@ class App extends Component {
       });
   }
 
-  
-
   addToCart(selectedTeam) {
     let cartItems = this.state.cart;
     let productID = selectedTeam.id;
@@ -67,13 +68,11 @@ class App extends Component {
         cart: cartItems
       })
     }
-
-
   }
 
   onRemove(indexToRemove) {
     let cart = this.state.cart;
-		let index = cart.findIndex((x => x.id == indexToRemove));
+    let index = cart.findIndex((x => x.id === indexToRemove));
     this.state.cart.splice(index, 1);
     this.setState({
       cart: this.state.cart
@@ -87,64 +86,51 @@ class App extends Component {
     });
   }
 
+  checkOut() {
+    this.setState({
+      cart: [],
+      teamList: teamList
+    }
+    )
+  }
+
   render() {
     return (
       <div>
-        <header>
-          <div className="navbar navbar-dark bg-dark box-shadow">
-            <div className="container d-flex justify-content-between">
-              <a href="" className="navbar-brand d-flex align-items-center">
-                <strong>Soccer Jersey Store</strong>
-              </a>
-              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span className="glyphicon glyphicon-shopping-cart" data-toggle="modal" data-target="#exampleModal"><i className="fas fa-shopping-cart"></i></span>
-              </button>
-            </div>
-          </div>
-        </header>
+        <Header
+          noItems={this.state.cart.length}
+          subTotal={this.state.cart.reduce((acc, item) => {
+            return acc += item.quantity * item.price
+          }, 0)}
+          />
+
         <br />
-        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Shopping Cart</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <div id="shoppingCart">
-                  <ShoppingCart
-                    cart={this.state.cart}
-                    onRemove={this.onRemove}
-                    />
-                </div>
-              </div>
-              
-            </div>
-          </div>
-        </div>
+
+        <ModalCart
+          thecart={this.state.cart}
+          onRemove={this.onRemove}
+          checkOut={this.checkOut}
+          />
 
         <div className="container">
           <div className="row">
             {
-              this.state.teamList.map((team, index) => <Product
-                key={team.id}
-                teamPic={team.image}
-                teamName={team.team}
-                teamPrice={team.price}
-                teamQuantity={team.quantity}
-                increaseQuantity={text => this.increaseQuantity(text, index)}
-                decreaseQuantity={text => this.decreaseQuantity(text, index)}
-                addToCart={() => this.addToCart(team)}
-                />)
+              this.state.teamList.map((team, index) =>
+                <Product
+                  key={team.id}
+                  teamPic={team.image}
+                  teamName={team.team}
+                  teamPrice={team.price}
+                  teamQuantity={team.quantity}
+                  increaseQuantity={text => this.increaseQuantity(text, index)}
+                  decreaseQuantity={text => this.decreaseQuantity(text, index)}
+                  addToCart={() => this.addToCart(team)}
+                  />
+              )
             }
-
           </div>
         </div>
       </div>
-
     );
   }
 }

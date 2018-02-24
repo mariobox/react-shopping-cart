@@ -62,6 +62,12 @@ tr {
     border-bottom: 0px;
 }
 
+.counter {
+    font-size: 0.6em;
+    margin-left: 1em;
+    font-weight: bold;
+}
+
 
 .increment,
 .decrement{
