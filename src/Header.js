@@ -16,7 +16,7 @@ class Header extends Component {
                   <span className="counter">
                     No. of Items: {this.props.noItems} </span>
                     <span className="counter">
-                   Sub-Total: ${this.props.subTotal}
+                   Total: ${this.props.total}
                   </span>
                 </span>
               </button>

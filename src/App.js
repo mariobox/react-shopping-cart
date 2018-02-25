@@ -99,7 +99,7 @@ class App extends Component {
       <div>
         <Header
           noItems={this.state.cart.length}
-          subTotal={this.state.cart.reduce((acc, item) => {
+          total={this.state.cart.reduce((acc, item) => {
             return acc += item.quantity * item.price
           }, 0)}
           />
@@ -110,6 +110,9 @@ class App extends Component {
           thecart={this.state.cart}
           onRemove={this.onRemove}
           checkOut={this.checkOut}
+          total={this.state.cart.reduce((acc, item) => {
+            return acc += item.quantity * item.price
+          }, 0)}
           />
 
         <div className="container">

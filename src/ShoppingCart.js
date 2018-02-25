@@ -16,7 +16,7 @@ class ShoppingCart extends Component {
                                         <th scope="col">Country</th>
                                         <th scope="col">Quantity</th>
                                         <th scope="col">Unit Price</th>
-                                        <th scope="col">Total</th>
+                                        <th scope="col">Sub-Total</th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
@@ -39,7 +39,7 @@ class ShoppingCart extends Component {
                                 </tbody>
                                 <tfoot>{this.props.cart.length === 0 ? <tr>
                                     <td colSpan="7">Your cart is empty</td>
-                                </tr> : <tr><td colSpan="7"><button type="button" data-dismiss="modal" onClick={this.props.checkOut} className="btn btn-warning checkout">Proceed To Checkout</button></td></tr>
+                                </tr> : <tr><td colSpan="7">Total: ${this.props.tot}<br /><br /><button type="button" data-dismiss="modal" onClick={this.props.checkOut} className="btn btn-warning checkout">Proceed To Checkout</button></td></tr>
                                 }
                                 </tfoot>
                             </table>

@@ -18,6 +18,7 @@ class ModalCart extends Component {
                                 cart={this.props.thecart}
                                 onRemove={this.props.onRemove}
                                 checkOut={this.props.checkOut}
+                                tot={this.props.total}
                                 />
                         </div>
                     </div>

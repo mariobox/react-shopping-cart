@@ -26,7 +26,7 @@ class Product extends Component {
 
     render() {
         return (
-            <div className="col-sm-3">
+            <div className="col-sm">
                 <div className="card text-center">
                     <div className="card-body">
                         <img src={this.props.teamPic} className="shirt" alt={this.props.teamName} />
