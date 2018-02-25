@@ -8,8 +8,6 @@ The site uses a `<Header />` component which is basically a Bootstrap element wi
 
 When you click on the shopping cart icon, a Bootstrap modal containing a `<ModalCart />` component pops up and shows the items in the `<ShoppingCart />`. 
 
-<img src="../img/shoppingcart.jpg" class="profile">
-
 The shopping cart itself contains one or several `<ShoppingCartItems />`, each displaying the items selected, their description, unit price and subtotal. A small thumbnail of the product has been added for a better user experience.  If the shopping cart is empty a "Your cart is empty" message is displayed.  Other added functionality included a "Remove" button for each item in the shopping cart. When the "Remove" button is clicked the item is removed and the total dollar amount is recalculated.
 
 Finally, the shopping cart features a "Proceed to Checkout button". When you press it the page and the shopping cart are refreshed. In a full-fledged application it would take you to a page where you can pay for your purchase, but since this project deals only with the front-end, resetting the page is a good default action.
