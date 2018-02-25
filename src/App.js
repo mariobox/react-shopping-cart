@@ -132,7 +132,15 @@ class App extends Component {
               )
             }
           </div>
-        </div>
+        </div>        
+        <div className="container">
+          <div className="row">
+          <div className="col-md">
+          <hr />
+          <p><a href="http://github.com/mariobox/react-shopping-cart">Source Code</a> | Made by <a href="http://www.mariosanchez.org">Mario Sanchez Carrion</a></p>
+          </div>
+          </div>
+          </div>
       </div>
     );
   }
