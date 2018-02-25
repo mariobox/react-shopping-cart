@@ -30,7 +30,9 @@
     text-align: center;
 }
 
-
+header {
+    margin-bottom: 50px;
+}
 
 .shirtCart {
     width: 25px;

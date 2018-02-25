@@ -4,7 +4,7 @@ class Header extends Component {
     render() {
         return (
             <header>
-          <div className="navbar navbar-dark bg-dark box-shadow">
+          <div className="navbar fixed-top navbar-dark bg-dark box-shadow">
             <div className="container d-flex justify-content-between">
               <a href="" className="navbar-brand d-flex align-items-center">
                 <strong><i className="far fa-futbol"></i> Soccer Jersey Store</strong>
